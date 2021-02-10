@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC  
+ "-//Hibernate/Hibernate Mapping DTD 5.3//EN"  
+ "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+<class name="com.thinkitive.Exam" table="Exam">
+		<id name="no" column="no" type="int">
+			<generator class="assigned"></generator>
+		</id>
+
+	<property name="exam_name" column="exam_name" type="string"></property>
+		
+	
+		
+		<list name="question" cascade="all">
+		<key column="exam_no"></key>
+		<list-index column="quest"></list-index>
+		<one-to-many class="com.thinkitive.Question"/>
+		</list>
+
+	</class>
+
+
+	<class name="com.thinkitive.Question" table="Question">
+		<id name="no" column="no" type="int">
+			<generator class="assigned"></generator>
+		</id>
+	
+		<property name="exam_name" column="exam_name" type="string"></property>
+		
+		<property name="quest" column="quest" type="string"></property>
+		<property name="option1" column="option1" type="string"></property>
+		<property name="option2" column="option2" type="string"></property>
+		<property name="option3" column="option3" type="string"></property>
+		<property name="option4" column="option4" type="string"></property>
+		<property name="ans" column="ans" type="string"></property>
+
+	</class>
+	
+	
+	
+</hibernate-mapping>
